@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "decks#index"
 
+#triple nest!
   resources :users do
     resources :decks do
       resources :cards
@@ -10,10 +11,10 @@ Rails.application.routes.draw do
   end
 
   resources :decks do
+    resources :subjects #moved up for readability?
     resources :cards do
       collection { post :import }
     end
-    resources :subjects
   end
 
   resources :subjects do

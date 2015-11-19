@@ -35,7 +35,7 @@ class DecksController < ApplicationController
       @decks = @user.decks.all
     else
       flash[:alert] = "You must be signed in to create a deck"
-      redirect_to root
+      redirect_to root_path ##
     end
   end
 
