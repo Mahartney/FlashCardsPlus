@@ -5,7 +5,7 @@ class DecksController < ApplicationController
 
     if params[:user_id]
       @user = current_user
-      @decks = @user.decks.all
+      @decks = @user.decks #.all not needed?
       @deck = @user.decks.new
       redirect_to new_user_deck_path
     else
@@ -74,7 +74,7 @@ class DecksController < ApplicationController
       end
     else
       if @deck.update(deck_params)
-        flash[:notice] = "Deck has been updated."
+        flash[:notice] = "Deck has been published." #published seemed more clear to me than updated, which could also mean other things like a cards text has been updated
         redirect_to edit_deck_path(@deck.id)
       end
     end
