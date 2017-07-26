@@ -73,14 +73,13 @@ class CardsController < ApplicationController
     redirect_to edit_deck_path(params[:deck_id])
   end
 
-  private
+  private #indented for readability?
+    def deck_params
+      params.require(:deck).permt(:title)
+    end
 
-  def deck_params
-    params.require(:deck).permt(:title)
-  end
-
-  def card_params
-    params.require(:card).permit(:question, :answer)
-  end
-
+    def card_params
+      params.require(:card).permit(:question, :answer)
+    end
+    
 end
